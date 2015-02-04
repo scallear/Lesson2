@@ -1,4 +1,4 @@
-class Players
+class Player
   attr_accessor :choice
   attr_reader :name
   
@@ -7,7 +7,7 @@ class Players
   end
 end
 
-class User < Players
+class User < Player
   def pick_play
     begin
       puts "Pick your throw: [r] for rock, [p] for paper, or [s] for scissors"
@@ -16,7 +16,7 @@ class User < Players
   end
 end
 
-class Computer < Players
+class Computer < Player
   def pick_play
     self.choice = Game::CHOICES.keys.sample
   end
@@ -70,7 +70,7 @@ class Game
   end
   
   def display_round
-    @@round_num += 1
+    @round_num += 1
     system 'clear'
     puts "Round #{@round_num}, Fight!"
   end
@@ -96,8 +96,11 @@ class Game
       winning_statement
     end until check_win == "loose" || give_up == "y"
     
-    puts check_win == "loose" ? "Tough break, you lasted #{@round_num - 1} round(s)!" : 
-      "After #{@round_num} round(s), you gave up? Try harder next time!"
+    if check_win == "loose"
+      puts"Tough break, you lasted #{@round_num - 1} round(s)!"
+    else
+      puts "After #{@round_num} round(s), you gave up? Try harder next time!"
+    end
     puts "Thanks for playing!"
   end
 end
