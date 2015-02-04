@@ -27,11 +27,10 @@ class Game
   
   attr_accessor :user, :computer
   
-  @@round_num = 0
-  
   def initialize
     @user = User.new('You')
     @computer = Computer.new('Computer')
+    @round_num = 0
   end
   
   def intro
@@ -73,7 +72,7 @@ class Game
   def display_round
     @@round_num += 1
     system 'clear'
-    puts "Round #{@@round_num}, Fight!"
+    puts "Round #{@round_num}, Fight!"
   end
   
   def give_up
@@ -97,8 +96,8 @@ class Game
       winning_statement
     end until check_win == "loose" || give_up == "y"
     
-    puts check_win == "loose" ? "Tough break, you lasted #{@@round_num - 1} round(s)!" : 
-      "After #{@@round_num} round(s), you gave up? Try harder next time!"
+    puts check_win == "loose" ? "Tough break, you lasted #{@round_num - 1} round(s)!" : 
+      "After #{@round_num} round(s), you gave up? Try harder next time!"
     puts "Thanks for playing!"
   end
 end
