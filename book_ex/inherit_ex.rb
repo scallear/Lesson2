@@ -1,4 +1,4 @@
-#Exercises 1-6
+#Exercises 1               -6
 module Towable
   def can_tow?(pounds)
     pounds < 2000 ? true : false
@@ -30,7 +30,7 @@ class Vehicle
   
   def brake(how_much)
     self.current_speed -= how_much
-    puts "You put on the breaks. Your speed decreased by #{how_much}mph. You are now going #{current_speed}mph."
+    puts "You put on the breaks decreasing you speed by #{how_much}mph. Current Speed: #{current_speed}mph."
   end
   
   def turn_off
